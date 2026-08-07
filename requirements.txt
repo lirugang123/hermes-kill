@@ -10,7 +10,7 @@ regex>=2023.0.0
 
 # HTTP client
 httpx>=0.25.0
-aiohttp>=3.8.0
+aiohttp>=3.14.3
 
 # Data processing
 pandas>=2.0.0
