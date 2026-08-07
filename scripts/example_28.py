@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-\"\"\"
-示例28: 功能演示
-\"\"\"
+"""
+示例文件
+"""
 
 def main():
-    print(f"Example 28")
+    print("Example")
 
 if __name__ == "__main__":
     main()
