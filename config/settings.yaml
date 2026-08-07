@@ -1,0 +1,34 @@
+# Hermes Kill Configuration
+
+api_keys:
+  firecrawl: "${FIRECRAWL_API_KEY}"
+  github: "${GITHUB_TOKEN}"
+
+playwright:
+  headless: true
+  timeout: 30000
+
+proxy:
+  enabled: false
+  host: localhost
+  port: 8080
+
+rate_limiting:
+  requests_per_second: 10
+  delay_seconds: 1.0
+
+logging:
+  level: INFO
+  file: logs/app.log
+
+database:
+  url: sqlite:///data/crawler.db
+
+cache:
+  enabled: true
+  ttl: 3600
+  max_size: 1000
+
+output:
+  dir: output
+  format: json

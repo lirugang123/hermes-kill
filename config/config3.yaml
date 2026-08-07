@@ -1,0 +1,11 @@
+# config3 Configuration
+project:
+  name: hermes-kill
+  version: 1.0.0
+  
+settings:
+  debug: false
+  log_level: INFO
+  
+database:
+  url: sqlite:///data/config3.db

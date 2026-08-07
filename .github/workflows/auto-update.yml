@@ -1,0 +1,27 @@
+name: Auto Update
+
+on:
+  schedule:
+    # 每天UTC 00:00执行（北京时间08:00）
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Check for updates
+      run: |
+        echo "Checking for updates..."
+        # 这里可以添加检查更新的逻辑
+
+    - name: Create update file
+      run: |
+        date "+%Y-%m-%d %H:%M:%S" > LAST_UPDATE.txt
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add LAST_UPDATE.txt
+        git commit -m "chore: auto-update timestamp" || echo "No changes"
+        git push
