@@ -8,7 +8,7 @@ import requests
 import json
 from typing import Dict, List, Optional
 
-class API Integrator:
+class APIIntegrator:
     """API集成器"""
     
     def __init__(self, api_key: str = None):
@@ -104,7 +104,7 @@ class API Integrator:
 
 def main():
     """主函数"""
-    api = API Integrator()
+    api = APIIntegrator()
     
     # 测试GitHub搜索
     print("Searching GitHub for 'python'...")

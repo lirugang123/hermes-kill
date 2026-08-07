@@ -31,10 +31,10 @@ class ConfigManager:
         config_path = Path(self.config_file)
         if config_path.exists():
             self.config = self._parse_config(config_path)
-            logger.info(f"Loaded config from {config_file}")
+            logger.info(f"Loaded config from {self.config_file}")
         else:
             self.config = {}
-            logger.warning(f"Config file not found: {config_file}")
+            logger.warning(f"Config file not found: {self.config_file}")
     
     def _parse_config(self, path: Path) -> Dict:
         """解析配置文件"""
