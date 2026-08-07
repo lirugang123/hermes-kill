@@ -1,27 +1,23 @@
-name: Auto Update
+name: auto-update
 
 on:
   schedule:
-    # 每天UTC 00:00执行（北京时间08:00）
-    - cron: '0 0 * * *'
+    - cron: '0 8 * * *'
   workflow_dispatch:
 
 jobs:
-  update:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
-    - name: Check for updates
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
       run: |
-        echo "Checking for updates..."
-        # 这里可以添加检查更新的逻辑
-
-    - name: Create update file
-      run: |
-        date "+%Y-%m-%d %H:%M:%S" > LAST_UPDATE.txt
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git add LAST_UPDATE.txt
-        git commit -m "chore: auto-update timestamp" || echo "No changes"
-        git push
+        pip install --upgrade pip
+        pip install pytest pytest-cov
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run tests
+      run: pytest tests/ -v --tb=short
